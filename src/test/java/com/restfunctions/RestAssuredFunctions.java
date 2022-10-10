@@ -27,16 +27,16 @@ public class RestAssuredFunctions {
         return given().contentType(ContentType.JSON).header("Authorization", "Bearer " + accessToken).body(requestBody).post(url);
     }
 
-    public static Response put(String url,String username, String password, Object requestBody) {
-        return given().contentType(ContentType.JSON).body(requestBody).auth().basic(username, password).put(url);
+    public static Response put(String url,String accessToken, Object requestBody) {
+        return given().contentType(ContentType.JSON).header("Authorization", "Bearer " + accessToken).body(requestBody).put(url);
     }
 
     public static Response get(String url, String username, String password) {
         return given().contentType(ContentType.JSON).auth().basic(username, password).get(url);
     }
 
-    public static Response patch(String url, String username, String password, Object requestBody) {
-        return given().contentType(ContentType.JSON).auth().basic(username, password).body(requestBody).patch(url);
+    public static Response patch(String url, String accessToken, Object requestBody) {
+        return given().contentType(ContentType.JSON).header("Authorization", "Bearer " + accessToken).body(requestBody).patch(url);
     }
 
     public static Response post(String url, String username, String password, String requestBody) {

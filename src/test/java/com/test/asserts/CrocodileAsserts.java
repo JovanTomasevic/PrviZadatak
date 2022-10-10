@@ -2,23 +2,24 @@ package com.test.asserts;
 
 
 import com.data.models.*;
-import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
 public class CrocodileAsserts {
 
     public SoftAssert softAssert = new SoftAssert();
-    ;
 
-    public void assertCreateNewCrocodile(CreateNewCrocodileResponse createCrocodileResponse, CreateNewCrocodileRequest createCrocodileRequest) {
-        softAssert.assertEquals(createCrocodileResponse.getName(), createCrocodileRequest.getName(), "Name didn't match");
-        softAssert.assertEquals(createCrocodileResponse.getDateOfBirth(), createCrocodileRequest.getDateOfBirth(), "date of birth didn't match");
-        softAssert.assertEquals(createCrocodileResponse.getSex(), createCrocodileRequest.getSex(), "Sex didn't match");
+
+    public void assertCreateNewCrocodile(CreateNewCrocodileResponse createNewCrocodileResponse, CreateNewCrocodileRequest createCrocodileRequest) {
+        softAssert.assertEquals(createNewCrocodileResponse.getName(), createCrocodileRequest.getName(), "Name didn't match");
+        softAssert.assertEquals(createNewCrocodileResponse.getDateOfBirth(), createCrocodileRequest.getDateOfBirth(), "date of birth didn't match");
+        softAssert.assertEquals(createNewCrocodileResponse.getSex(), createCrocodileRequest.getSex(), "Sex didn't match");
         softAssert.assertAll();
     }
 
     public void assertPatchCrocodile(PatchCrocodileResponse patchCrocodileResponse, PatchCrocodileRequest patchCrocodileRequest) {
         softAssert.assertEquals(patchCrocodileRequest.getName(), patchCrocodileResponse.getName(), "Name didn't match");
+       // softAssert.assertEquals(patchCrocodileRequest.getSex(), patchCrocodileResponse.getSex(), "Sex didn't match");
+      //  softAssert.assertEquals(patchCrocodileRequest.getDateOfBirth(), patchCrocodileResponse.getDateOfBirth(), "Date of birth didn't match");
         softAssert.assertAll();
     }
 

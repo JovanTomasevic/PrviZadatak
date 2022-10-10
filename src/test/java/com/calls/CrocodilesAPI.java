@@ -1,5 +1,6 @@
 package com.calls;
 
+import com.constants.ApiEndpoints;
 import com.data.models.*;
 import com.restfunctions.GsonFunctions;
 import com.restfunctions.RestAssuredFunctions;
@@ -19,19 +20,19 @@ public class CrocodilesAPI {
     }
 
     public static RegisterUserResponse registerUserResponse(RegisterUserRequest registerUserRequest){
-        return GsonFunctions.parseSuccessResponseToModel(RestAssuredFunctions.post("/user/register/", registerUserRequest), RegisterUserResponse.class);
+        return GsonFunctions.parseSuccessResponseToModel(RestAssuredFunctions.post(ApiEndpoints.USERS, registerUserRequest), RegisterUserResponse.class);
     }
 
     public static CreateNewCrocodileResponse createNewCrocodileResponse(String accessToken, CreateNewCrocodileRequest createCrocodileRequest) {
-        return GsonFunctions.parseSuccessResponseToModel(RestAssuredFunctions.post("my/crocodiles/", accessToken, createCrocodileRequest), CreateNewCrocodileResponse.class);
+        return GsonFunctions.parseSuccessResponseToModel(RestAssuredFunctions.post(ApiEndpoints.CROCODILES,accessToken ,createCrocodileRequest), CreateNewCrocodileResponse.class);
     }
 
 
-    public static UpdateCrocodileResponse updateCrocodileResponse(UpdateCrocodileRequest updateCrocodileRequest){
-        return GsonFunctions.parseSuccessResponseToModel(RestAssuredFunctions.put("my/crocodiles/" + crocId + "/","JovanHTECGROUP1u45","test123", updateCrocodileRequest), UpdateCrocodileResponse.class);
+    public static UpdateCrocodileResponse updateCrocodileResponse(String accessToken,Integer id, UpdateCrocodileRequest updateCrocodileRequest){
+        return GsonFunctions.parseSuccessResponseToModel(RestAssuredFunctions.put(ApiEndpoints.SINGLE_CROCODILE(id),accessToken, updateCrocodileRequest), UpdateCrocodileResponse.class);
   }
 
-  public static PatchCrocodileResponse patchCrocodileResponse(PatchCrocodileRequest patchCrocodileRequest){
-        return GsonFunctions.parseSuccessResponseToModel(RestAssuredFunctions.patch("my/crocodiles/12163110/","JovanHTECGROUP1u45","test123", patchCrocodileRequest), PatchCrocodileResponse.class);
+  public static PatchCrocodileResponse patchCrocodileResponse(String accessToken,Integer id, PatchCrocodileRequest patchCrocodileRequest){
+        return GsonFunctions.parseSuccessResponseToModel(RestAssuredFunctions.patch(ApiEndpoints.SINGLE_CROCODILE(id),accessToken, patchCrocodileRequest), PatchCrocodileResponse.class);
   }
 }
