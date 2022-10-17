@@ -1,1 +1,2 @@
-src/test/resources/test.properties
+#Config File
+src/test/resources/env.properties
